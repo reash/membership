@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Membership</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <br />
+  <%= render :partial => 'layouts/flash_msgs' %>
+  <% if user_signed_in? %>
+    <section class='identifier'>
+      <%= render :partial => 'layouts/navlinks' %>
+      <section class='user'>
+        Logged in as <strong><%= current_user.email %></strong>
+      </section>
+    </section>
+  <% end %>
+<br /><br />
+<table id="topper">
+<tr>
+<td><img src='/images/starOfDavid.jpg' height="50" width="50"></td>
+<td align="center">Mario Araya</td>
+<td align="right">Jewish Community<br>Santiago Chile</td>
+</tr>
+</table>
+<%= yield %>
+
+</body>
+</html>

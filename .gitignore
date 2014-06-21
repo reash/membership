@@ -1,0 +1,22 @@
+#
+# toplevel .gitignore file for CSD
+#
+
+# ignore bundler config, database config, tmp and log files.
+/.bundle
+/config/database.yml
+/config/environments/*
+/config/tmp.tmp
+/config/environments
+/log/*.log
+/tmp
+/public/ssout/*
+*~
+*-
+*.swp
+*.tmp
+/Gemfile.lock
+/db/schema.rb
+/.rvmrc
+/.ruby-version
+/.ruby-gemset
