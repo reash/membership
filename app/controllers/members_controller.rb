@@ -16,6 +16,13 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
   end
+  
+  # GET /members/new
+  def new_family_member
+    params.permit(:family_id)
+    @member = Member.new
+    @member = params[:family_id]
+  end
 
   # GET /members/1/edit
   def edit

@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :family_id %><br>
-    <%= f.number_field :family_id %>
+    <%= Family @member.family.name%><br>
+    <%= f.hidden_field :family_id %>
   </div>
   <div class="field">
     <%= f.label :first_name %><br>

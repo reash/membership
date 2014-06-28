@@ -1,5 +1,9 @@
 Membership::Application.routes.draw do
-  resources :members
+  resources :members do
+    collection do
+      get 'new_family'
+    end
+  end
 
   devise_for :users
   resources :families do
