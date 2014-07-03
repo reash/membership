@@ -16,6 +16,12 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
   end
+
+  def new_member
+    permit(:family_id)
+    family_id = params[:family_id]
+    @family = Family.find(family_id)
+  end
   
   # GET /members/new
   def new_family_member

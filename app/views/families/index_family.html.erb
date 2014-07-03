@@ -15,7 +15,7 @@
         <td><%= family.name %></td>
         <td><%= family.main_person %></td>
         <td><%= link_to 'Show', family %></td>
-        <td><%= link_to 'Edit', edit_family_family_path(family) %></td>
+        <td><%= link_to 'Edit', edit_top_family_family_path(family.id) %></td>
         <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Family', new_family_path %>
+<%= link_to 'New Family', new_family_families_path %>

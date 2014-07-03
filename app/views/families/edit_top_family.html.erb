@@ -1,0 +1,8 @@
+<h1>Editing family</h1>
+
+<%= form_tag({:controller => :families, :action => :edit_family}, {:method => :get, :name => :fname}) %>
+  <%= render :partial => 'family_show_form' %> 
+  <%= render :partial => 'members/member_index' %>
+</form>
+
+<%= link_to 'Back', families_path %>

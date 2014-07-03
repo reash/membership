@@ -1,25 +1,7 @@
 <h1>Editing family</h1>
 
 <%= form_tag({:controller => :families, :action => :update_family}, {:method => :post, :name => :fname}) %>
-
-  <div class="field">
-    name <br>
-    <%= text_field_tag 'Family', @family.name%>
-  </div>
-  <div class="field">
-    Head of Family 
-    <% if @family.main_person_id? %>
-      <%= @family.main_person.first_name %> <%= @family.main_person.last_name %>
-    <% else %>
-      Not Assigned
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= submit_tag %>
-  </div>
-
-  <%= render :partial => 'members/member_index' %>
+  <%= render :partial => 'family_form' %> 
 </form>
 
-<%= link_to 'Show', @family %> |
 <%= link_to 'Back', families_path %>

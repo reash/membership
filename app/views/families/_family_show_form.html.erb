@@ -1,0 +1,17 @@
+
+  <div class="field">
+    Head of Family 
+    <%= @family.head_of_household %>
+    <%= hidden_field_tag 'family_id', @family.id %>
+  </div>
+  <div class="field">
+    Family Name <br>
+    <%= @family.name %>
+  </div>
+  <div class="field">
+    Notes on Family <br>
+    <%= @family.notes %>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Edit Family' %>
+  </div>

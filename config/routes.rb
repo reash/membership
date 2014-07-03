@@ -1,7 +1,8 @@
 Membership::Application.routes.draw do
   resources :members do
     collection do
-      get 'new_family'
+      get 'new_member'
+      get 'create_member'
     end
   end
 
@@ -9,9 +10,13 @@ Membership::Application.routes.draw do
   resources :families do
     member do
       get 'edit_family'
+      get 'edit_top_family'
     end
     collection do
+      post 'create_family'
       post 'update_family'
+      get 'new_family'
+      get 'index_family'
     end
   end
 
