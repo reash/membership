@@ -25,6 +25,10 @@
     </tr>
     <tr>
       <td>Relationship</td>
-      <td><%= select_tag( "relationship", options_for_select(@relationships.map { |a| [a.relationship, a.relationship] })) %> </td>
+      <td><%= date_select 'member', 'birthday', default: @member.birthday %> </td>
+    </tr>
+    <tr>
+      <td><%= select_tag 'member', 'relationship', @relationships.map { |p| [ p.relationship, p.relationship ] } %> </td>
+      <td><%= @relationships. %> </td>
     </tr>
   <table

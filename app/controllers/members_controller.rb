@@ -18,9 +18,12 @@ class MembersController < ApplicationController
   end
 
   def new_member
-    permit(:family_id)
+    params.permit(:family_id)
     family_id = params[:family_id]
     @family = Family.find(family_id)
+    @member = Member.new
+    @member.last_name = @family.name
+    @relationships = Relationship.all.sort
   end
   
   # GET /members/new
