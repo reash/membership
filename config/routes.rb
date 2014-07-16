@@ -2,14 +2,13 @@ Membership::Application.routes.draw do
   resources :members do
     collection do
       get 'new_member'
-      get 'create_member'
+      post 'create_family_member'
     end
   end
 
   devise_for :users
   resources :families do
     member do
-      get 'edit_family'
       get 'edit_top_family'
     end
     collection do
@@ -17,6 +16,7 @@ Membership::Application.routes.draw do
       post 'update_family'
       get 'new_family'
       get 'index_family'
+      get 'edit_family'
     end
   end
 

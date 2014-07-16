@@ -3,8 +3,7 @@
 <%= form_tag({:controller => :families, :action => :update_family}, {:method => :post, :name => :fname}) %>
   <%= render :partial => 'family_form' %> 
   <% @family.members %>
-    <%= render :partial => 'member/head_member' %> 
-  <% end %>
+  <%= render :partial => 'members/head_member' %> 
 </form>
 
 <%= link_to 'Back', families_path %>

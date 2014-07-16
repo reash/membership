@@ -13,5 +13,5 @@
     <%= @family.notes %>
   </div>
   <div class="actions">
-    <%= submit_tag 'Edit Family' %>
+    <%= link_to 'Edit Family', :controller => :families, :action => :edit_family, :family_id => @family.id %>
   </div>

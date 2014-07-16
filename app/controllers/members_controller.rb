@@ -39,6 +39,46 @@ class MembersController < ApplicationController
 
   # POST /members
   # POST /members.json
+  def create_family_member
+    params.permit(:family_id)
+    family_id = params[:family_id]
+    params.permit(:first_name)
+    first_name = params[:first_name]
+    params.permit(:middle_name)
+    middle_name = params[:middle_name]
+    params.permit(:last_name)
+    last_name = params[:last_name]
+    params.permit(:gender)
+    gender = params[:gender]
+    params.permit(:relationship)
+    relationship = params[:relationship]
+    params.permit(:member)
+    member = params[:member]
+    b = member[:birthday]
+    birthday = Date.new(member['birthday(1i)'].to_i, member['birthday(2i)'].to_i, member['birthday(3i)'].to_i)
+
+    @member = Member.new
+    @member.first_name = first_name
+    @member.middle_name = middle_name
+    @member.last_name = last_name
+    if gender == 'Male'
+      @member.male = true
+    else
+      @member.male = false
+    end
+    @member.birthday = birthday
+    @member.relationship = relationship
+    @member.family_id = family_id
+    if(@member.save!)
+      flash[:success] = "Member #{first_name} #{last_name} saved."
+      redirect_to :controller => :families, :action => :edit_top_family, :id => family_id
+    else
+      flash[:error] = "Member #{first_name} #{last_name} Not Saved!"
+      redirect_to :controller => :members, :action => :new_member, :family_id => family_id
+    end
+
+    
+  end
   def create
     @member = Member.new(member_params)
 

@@ -13,8 +13,8 @@
     <%= hidden_field_tag 'family_id', @family.id %>
   </div>
   <div class="field">
-    Family Name <br>
-    <%= text_area_tag 'notes', @family.notes, cols: 40, rows: 20 %>
+    Notes <br>
+    <%= text_area_tag 'notes', @family.notes, cols: 40, rows: 10 %>
   </div>
   <div class="actions">
     <%= submit_tag %>

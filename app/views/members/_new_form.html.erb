@@ -14,9 +14,9 @@
     <tr>
       <td>Gender</td>
       <% if !@member.male %>
-        <td>Male <%= radio_button_tag('member', 'male', false) %> Female <%= radio_button_tag('gender', 'female', true) %> </td>
+        <td>Male <%= radio_button_tag('gender', 'male', false) %> Female <%= radio_button_tag('gender', 'female', true) %> </td>
       <% else %>
-        <td>Male <%= radio_button_tag('member', 'male', true) %> Female <%= radio_button_tag('gender', 'female', false) %> </td>
+        <td>Male <%= radio_button_tag('gender', 'male', true) %> Female <%= radio_button_tag('gender', 'female', false) %> </td>
       <% end %>
     </tr>
     <tr>
@@ -27,4 +27,4 @@
       <td>Relationship</td>
       <td><%= select_tag( "relationship", options_for_select(@relationships.map { |a| [a.relationship, a.relationship] })) %> </td>
     </tr>
-  <table
+  <table>
