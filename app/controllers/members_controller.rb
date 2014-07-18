@@ -117,6 +117,14 @@ class MembersController < ApplicationController
     end
   end
 
+  def edit_member
+    params.permit(:id)
+    id = params[:id]
+    @member = Member.find(id)
+    @family = Family.find(@member.family_id)
+    @relationships = Relationship.all.sort
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member

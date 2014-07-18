@@ -21,7 +21,7 @@
     </tr>
     <tr>
       <td>Birthday</td>
-      <td><%= date_select 'member', 'birthday', default: @member.birthday %> </td>
+      <td><%= date_select 'member', 'birthday', default: @member.birthday, start_year: 1900 %> </td>
     </tr>
     <tr>
       <td>Relationship</td>

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '~> 4.1.1'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
@@ -53,7 +53,7 @@ gem 'writeexcel'
 gem 'roo'
 gem 'i18n'
 gem 'spreadsheet'
-gem 'passenger', '4.0.41'
+gem 'passenger', '~> 4.0.41'
 gem 'devise_uid'
 gem 'nokogiri'
 
