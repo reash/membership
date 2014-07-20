@@ -3,6 +3,6 @@
 <%= form_tag({:controller => :members, :action => :update_family_member}, {:method => :post, :name => :fname}) %>
   <%= render :partial => 'families/family_show_form' %>
   <%= render 'new_form' %>
+  <%= hidden_field_tag 'member_id', @member.id %>
   <%= submit_tag 'Update Member' %><br /><br />
-<%= link_to 'Edit Family', :controller => :families, :action => :edit_family, :family_id => @family.id %>
 </form>

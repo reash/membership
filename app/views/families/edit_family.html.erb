@@ -2,8 +2,12 @@
 
 <%= form_tag({:controller => :families, :action => :update_family}, {:method => :post, :name => :fname}) %>
   <%= render :partial => 'family_form' %> 
-  <% @family.members %>
   <%= render :partial => 'members/head_member' %> 
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+
 </form>
 
+<%= link_to 'New Member', new_member_members_path(:family_id => @family.id) %> <br />
 <%= link_to 'Back', families_path %>

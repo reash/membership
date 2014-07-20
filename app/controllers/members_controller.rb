@@ -40,27 +40,53 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create_family_member
+    member_params
+    @member = Member.new
+    populate_member
     params.permit(:family_id)
     family_id = params[:family_id]
-    params.permit(:first_name)
-    first_name = params[:first_name]
-    params.permit(:middle_name)
-    middle_name = params[:middle_name]
-    params.permit(:last_name)
-    last_name = params[:last_name]
     params.permit(:gender)
     gender = params[:gender]
-    params.permit(:relationship)
-    relationship = params[:relationship]
-    params.permit(:member)
-    member = params[:member]
-    b = member[:birthday]
-    birthday = Date.new(member['birthday(1i)'].to_i, member['birthday(2i)'].to_i, member['birthday(3i)'].to_i)
+    params.permit(:birth)
+    birth = params[:birth]
+    birthday = Date.new(birth['birthday(1i)'].to_i, birth['birthday(2i)'].to_i, birth['birthday(3i)'].to_i)
 
     @member = Member.new
-    @member.first_name = first_name
-    @member.middle_name = middle_name
-    @member.last_name = last_name
+
+    populate_member
+
+    if gender == 'Male'
+      @member.male = true
+    else
+      @member.male = false
+    end
+    @member.birthday = birthday
+    @member.family_id = family_id
+    if(@member.save!)
+      flash[:success] = "Member #{@member.first_name} #{@member.last_name} Created."
+      redirect_to :controller => :families, :action => :edit_top_family, :id => family_id
+    else
+      flash[:error] = "Member #{@member.first_name} #{@member.last_name} Not Created!"
+      redirect_to :controller => :members, :action => :new_member, :family_id => family_id
+    end
+
+    
+  end
+
+  def update_family_member
+    params.permit(:member_id)
+    member_id = params[:member_id]
+    @member = Member.find(member_id)
+    member_params
+    populate_member
+    params.permit(:family_id)
+    family_id = params[:family_id]
+    params.permit(:gender)
+    gender = params[:gender]
+    params.permit(:birth)
+    birth = params[:birth]
+    birthday = Date.new(birth['birthday(1i)'].to_i, birth['birthday(2i)'].to_i, birth['birthday(3i)'].to_i)
+
     if gender == 'Male'
       @member.male = true
     else
@@ -70,15 +96,14 @@ class MembersController < ApplicationController
     @member.relationship = relationship
     @member.family_id = family_id
     if(@member.save!)
-      flash[:success] = "Member #{first_name} #{last_name} saved."
+      flash[:success] = "Member #{@member.first_name} #{@member.last_name} Updated."
       redirect_to :controller => :families, :action => :edit_top_family, :id => family_id
     else
-      flash[:error] = "Member #{first_name} #{last_name} Not Saved!"
+      flash[:error] = "Member #{@member.first_name} #{@member.last_name} Not Updated!"
       redirect_to :controller => :members, :action => :new_member, :family_id => family_id
     end
-
-    
   end
+
   def create
     @member = Member.new(member_params)
 
@@ -110,11 +135,13 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
-    @member.destroy
-    respond_to do |format|
-      format.html { redirect_to members_url }
-      format.json { head :no_content }
+    id = @member.id
+    if @member.destroy
+      flash[:success] = 'Member Deleted'
+    else
+      flash[:error] = 'Member Not Delete'
     end
+    redirect_to :controller => :families, :action => :edit_top_family, :id => id
   end
 
   def edit_member
@@ -131,8 +158,15 @@ class MembersController < ApplicationController
       @member = Member.find(params[:id])
     end
 
+    def populate_member
+      m = params[:member]
+      m.each_pair do |a,b|
+        @member[a] = m[a]
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:family_id, :first_name, :middle_name, :last_name)
+      params.require(:member).permit(:family_id, :first_name, :middle_name, :last_name, :relationship)
     end
 end

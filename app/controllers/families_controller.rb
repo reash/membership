@@ -23,10 +23,15 @@ class FamiliesController < ApplicationController
   def update_family
     params.permit(:family_id)
     params.permit(:name)
+    params.permit(:boss)
     name = params[:name]
     family_id = params[:family_id]
+    boss = params[:boss]
     @family = Family.find(family_id)
     @family.name = name
+    if boss
+      @family.main_person_id = boss
+    end
     unless(@family.save!)
       flash[:error] = 'Family Information Not Saved!'
     else

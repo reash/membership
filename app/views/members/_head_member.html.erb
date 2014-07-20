@@ -1,6 +1,5 @@
 <h1>Head of Family</h1>
 <table>
-  <thead>
     <tr>
       <th>Check</th>
       <th>Relationship</th>
@@ -9,9 +8,7 @@
       <th>Last name</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
 
-  <tbody>
     <% @family.members.each do |member| %>
       <tr>
         <% if @family.main_person_id == member.id %>
@@ -20,15 +17,12 @@
           <td><%= radio_button_tag('boss', member.id, false) %></td>
         <% end %>
         <td><%= member.relationship %></td>
-        <td><%= member.relationship %></td>
         <td><%= member.first_name %></td>
         <td><%= member.middle_name %></td>
         <td><%= member.last_name %></td>
       </tr>
     <% end %>
-  </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Member', new_member_members_path(:family_id => @family.id) %>
