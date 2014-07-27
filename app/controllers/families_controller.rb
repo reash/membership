@@ -3,9 +3,9 @@ class FamiliesController < ApplicationController
 
   # GET /families
   # GET /families.json
-  def index
-    @families = Family.all
-  end
+  #def index
+  #  @families = Family.all
+  #end
 
   # GET /families/1
   # GET /families/1.json

@@ -1,4 +1,5 @@
 Membership::Application.routes.draw do
+  resources :trim
   resources :members do
     member do 
       get 'edit_member'
