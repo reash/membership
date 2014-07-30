@@ -1,0 +1,7 @@
+<h1>Edit Trim</h1>
+
+<%= form_tag({:controller => :trim, :action => :update}, {:method => :post, :name => :fname}) %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Update trim' %><br /><br />
+<%= link_to 'Back', trim_index_path %>
+</form>
