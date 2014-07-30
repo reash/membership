@@ -1,0 +1,7 @@
+<h1>Create New Member</h1>
+
+<%= form_tag({:controller => :trim, :action => :create}, {:method => :post, :name => :fname}) %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Create trim' %><br /><br />
+<%= link_to 'Back', trim_index_path %>
+</form>
