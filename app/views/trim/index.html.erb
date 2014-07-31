@@ -15,7 +15,7 @@
         <td><%= trim.value %></td>
         <td><%= link_to 'Show', trim %></td>
         <td><%= link_to 'Edit', edit_trim_path(trim.id) %></td>
-        <td><%= link_to 'Destroy', trim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', {:controller => :trim, :action => :delete, :id=>trim.id} , data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
 </table>

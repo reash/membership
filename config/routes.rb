@@ -1,5 +1,10 @@
 Membership::Application.routes.draw do
-  resources :trim
+  resources :trim do
+    member do
+      post 'update'
+      get 'delete'
+    end
+  end
   resources :members do
     member do 
       get 'edit_member'

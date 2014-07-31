@@ -3,6 +3,6 @@ class Trim < ActiveRecord::Base
     name <=> other.name
   end
   def self.trimit(name)
-    Trim.where("name = #{name}").first.value
+    Trim.where("name = '#{name}'").first.value
   end
 end
